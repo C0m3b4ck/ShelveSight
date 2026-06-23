@@ -19,6 +19,21 @@ extern Fl_Menu_Button *menubtn_settings;
 extern Fl_Menu_Button *menubtn_login;
 extern Fl_Menu_Button *menubtn_register;
 extern Fl_Group *group_login;
+extern Fl_Group *group_addbooks;
+#include <FL/Fl_Check_Button.H>
+#include <FL/Fl_Choice.H>
+#include <FL/Fl_Browser.H>
+extern Fl_Menu_Button *menubtn_clear;
+extern Fl_Group *group_addreaders;
+extern Fl_Group *group_addloans;
+extern Fl_Group *group_editbooks;
+extern Fl_Group *group_deletebooks;
+extern Fl_Group *group_editreaders;
+extern Fl_Group *group_deletereaders;
+extern Fl_Group *group_editloans;
+extern Fl_Group *group_markloans;
+extern Fl_Double_Window *window_assistant;
+extern Fl_Image *assistant_image;
 Fl_Double_Window* make_window();
 extern Fl_Menu_Item menu_menubtn_books[];
 extern Fl_Menu_Item menu_menubtn_readers[];
@@ -29,4 +44,5 @@ extern Fl_Menu_Item menu_menubtn_databases[];
 extern Fl_Menu_Item menu_menubtn_settings[];
 void MENU_BTN_CB();
 void BTN_CB();
+void hide_all_groups();
 #endif

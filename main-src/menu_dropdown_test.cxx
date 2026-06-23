@@ -14,15 +14,11 @@ static void cb_Remove(Fl_Menu_*, void*) {
   MENU_BTN_CB();
 }
 
-static void cb_Search(Fl_Menu_*, void*) {
-  MENU_BTN_CB();
-}
-
 Fl_Menu_Item menu_menubtn_books[] = {
- {"Add Book", 0,  (Fl_Callback*)MENU_BTN_CB, (void*)(add_books), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"Add Books", 0,  (Fl_Callback*)MENU_BTN_CB, (void*)(add_books), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Edit Books", 0,  (Fl_Callback*)cb_Edit, (void*)(edit_books), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Remove Books", 0,  (Fl_Callback*)cb_Remove, (void*)(remove_books), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"Search Books", 0,  (Fl_Callback*)cb_Search, (void*)(search_books), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"Manage Categories", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -36,15 +32,10 @@ static void cb_Remove1(Fl_Menu_*, void*) {
   MENU_BTN_CB();
 }
 
-static void cb_Search1(Fl_Menu_*, void*) {
-  MENU_BTN_CB();
-}
-
 Fl_Menu_Item menu_menubtn_readers[] = {
  {"Add Readers", 0,  (Fl_Callback*)cb_Add, (void*)(add_readers), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Edit Readers", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Remove Readers", 0,  (Fl_Callback*)cb_Remove1, (void*)(remove_readers), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"Search Readers", 0,  (Fl_Callback*)cb_Search1, (void*)(search_readers), 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -55,7 +46,6 @@ Fl_Menu_Item menu_menubtn_loans[] = {
  {"Edit Loans", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Remove Loans", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Expired Loans", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"Search Loans", 0,  0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0}
 };
 
@@ -88,11 +78,36 @@ Fl_Menu_Button *menubtn_register=(Fl_Menu_Button *)0;
 
 Fl_Group *group_login=(Fl_Group *)0;
 
+Fl_Group *group_addbooks=(Fl_Group *)0;
+
+Fl_Menu_Button *menubtn_clear=(Fl_Menu_Button *)0;
+
+Fl_Group *group_addreaders=(Fl_Group *)0;
+
+Fl_Group *group_addloans=(Fl_Group *)0;
+
+Fl_Group *group_editbooks=(Fl_Group *)0;
+
+Fl_Group *group_deletebooks=(Fl_Group *)0;
+
+Fl_Group *group_editreaders=(Fl_Group *)0;
+
+Fl_Group *group_deletereaders=(Fl_Group *)0;
+
+Fl_Group *group_editloans=(Fl_Group *)0;
+
+Fl_Group *group_markloans=(Fl_Group *)0;
+
+Fl_Double_Window *window_assistant=(Fl_Double_Window *)0;
+
+Fl_Image *assistant_image=(Fl_Image *)0;
+
 Fl_Double_Window* make_window() {
   Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(554, 370, "Bookworm");
+  { Fl_Double_Window* o = new Fl_Double_Window(542, 378, "ShelfSeeker");
     w = o; if (w) {/* empty */}
-    { group_register = new Fl_Group(0, 25, 550, 340);
+    { // Register
+      group_register = new Fl_Group(0, 25, 530, 340);
       group_register->hide();
       { Fl_Text_Display* o = new Fl_Text_Display(195, 25, 155, 0, "Register");
         o->labelsize(41);
@@ -112,7 +127,7 @@ Fl_Double_Window* make_window() {
         o->labelsize(31);
         o->textsize(21);
       } // Fl_Input_Choice* o
-      { Fl_Button* o = new Fl_Button(375, 290, 175, 75, "Register");
+      { Fl_Button* o = new Fl_Button(375, 290, 155, 75, "Register");
         o->color((Fl_Color)34);
         o->selection_color((Fl_Color)35);
         o->labelsize(31);
@@ -133,35 +148,36 @@ Fl_Double_Window* make_window() {
     { menubtn_books = new Fl_Menu_Button(0, 0, 55, 25, "Books");
       menubtn_books->menu(menu_menubtn_books);
     } // Fl_Menu_Button* menubtn_books
-    { menubtn_readers = new Fl_Menu_Button(55, 0, 80, 25, "Readers");
+    { menubtn_readers = new Fl_Menu_Button(55, 0, 70, 25, "Readers");
       menubtn_readers->menu(menu_menubtn_readers);
     } // Fl_Menu_Button* menubtn_readers
-    { menubtn_loans = new Fl_Menu_Button(135, 0, 65, 25, "Loans");
+    { menubtn_loans = new Fl_Menu_Button(125, 0, 60, 25, "Loans");
       menubtn_loans->menu(menu_menubtn_loans);
     } // Fl_Menu_Button* menubtn_loans
-    { menubtn_databases = new Fl_Menu_Button(200, 0, 90, 25, "Databases");
+    { menubtn_databases = new Fl_Menu_Button(185, 0, 85, 25, "Databases");
       menubtn_databases->menu(menu_menubtn_databases);
     } // Fl_Menu_Button* menubtn_databases
-    { menubtn_settings = new Fl_Menu_Button(290, 0, 70, 25, "Settings");
+    { menubtn_settings = new Fl_Menu_Button(270, 0, 65, 25, "Settings");
       menubtn_settings->menu(menu_menubtn_settings);
     } // Fl_Menu_Button* menubtn_settings
-    { menubtn_login = new Fl_Menu_Button(360, 0, 85, 25, "Log in/out");
+    { menubtn_login = new Fl_Menu_Button(335, 0, 80, 25, "Log in/out");
     } // Fl_Menu_Button* menubtn_login
-    { menubtn_register = new Fl_Menu_Button(445, 0, 85, 25, "Register");
+    { menubtn_register = new Fl_Menu_Button(415, 0, 75, 25, "Register");
     } // Fl_Menu_Button* menubtn_register
-    { group_login = new Fl_Group(0, 25, 530, 325);
+    { // Login
+      group_login = new Fl_Group(0, 25, 535, 340);
       group_login->hide();
       { Fl_Text_Display* o = new Fl_Text_Display(200, 30, 155, 0, "Login");
         o->labelsize(41);
         o->align(Fl_Align(34));
       } // Fl_Text_Display* o
-      { Fl_Input* o = new Fl_Input(110, 80, 420, 30, "Username");
+      { Fl_Input* o = new Fl_Input(110, 80, 425, 30, "Username");
         o->labelsize(19);
       } // Fl_Input* o
-      { Fl_Input* o = new Fl_Input(110, 120, 420, 30, "Password");
+      { Fl_Input* o = new Fl_Input(110, 120, 425, 30, "Password");
         o->labelsize(19);
       } // Fl_Input* o
-      { Fl_Button* o = new Fl_Button(360, 160, 170, 185, "Register");
+      { Fl_Button* o = new Fl_Button(360, 160, 175, 185, "Register");
         o->color((Fl_Color)34);
         o->selection_color((Fl_Color)35);
         o->labelsize(31);
@@ -176,9 +192,557 @@ Fl_Double_Window* make_window() {
         o->selection_color((Fl_Color)35);
         o->labelsize(31);
       } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(5, 30, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
       group_login->end();
     } // Fl_Group* group_login
+    { // Add Books
+      group_addbooks = new Fl_Group(0, 25, 540, 345);
+      group_addbooks->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(165, 25, 10, 30, "Add Books");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(45, 60, 410, 30, "Title");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { new Fl_Button(460, 60, 80, 30, "Check Title");
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(65, 90, 390, 30, "Author");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(80, 120, 160, 30, "Book ID");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(460, 90, 80, 30, "Check Author");
+        o->labelsize(12);
+      } // Fl_Button* o
+      { new Fl_Button(460, 120, 80, 30, "Check Title");
+      } // Fl_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(365, 120, 90, 30, "Non-numeric");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(240, 120, 125, 30, "Automatically check");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Choice* o = new Fl_Choice(65, 150, 200, 25, "Category");
+        o->down_box(FL_BORDER_BOX);
+      } // Fl_Choice* o
+      { Fl_Choice* o = new Fl_Choice(315, 150, 225, 25, "Status");
+        o->down_box(FL_BORDER_BOX);
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(225, 175, 315, 40, "ADD BOOK");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(5, 175, 210, 40, "Undo last add");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(205, 215, 10, 30, "Search");
+        o->labelsize(31);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(95, 245, 235, 30, "Search term:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(330, 245, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 225, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 270, 535, 90);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(0, 30, 70, 30, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_addbooks->end();
+    } // Fl_Group* group_addbooks
+    { // Clears workspace - shows backdrop
+      menubtn_clear = new Fl_Menu_Button(485, 0, 55, 25, "Clear");
+    } // Fl_Menu_Button* menubtn_clear
+    { // Add Readers
+      group_addreaders = new Fl_Group(-10, 25, 555, 345);
+      group_addreaders->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(150, 25, 10, 30, "Add Readers");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(60, 60, 380, 30, "Name");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { new Fl_Button(440, 60, 100, 30, "Check Name");
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(70, 90, 370, 30, "Surname");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(45, 120, 20, 30, "Grade");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(440, 90, 100, 30, "Check Surname");
+        o->labelsize(12);
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(110, 120, 20, 30, "Class");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(200, 120, 105, 30, "Reader ID");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Check_Button* o = new Fl_Check_Button(305, 140, 90, 30, "Non-numeric");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(305, 120, 170, 30, "Automatically check ID");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(13);
+      } // Fl_Check_Button* o
+      { new Fl_Button(460, 120, 80, 30, "Check ID");
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(250, 165, 290, 40, "ADD READER");
+        o->labelsize(31);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(0, 165, 245, 40, "Undo last add");
+        o->labelsize(25);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(210, 205, 10, 30, "Search");
+        o->labelsize(32);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Choice* o = new Fl_Choice(330, 255, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 235, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 280, 535, 90);
+      } // Fl_Browser* o
+      { new Fl_Input(90, 240, 240, 40, "Search term:");
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(5, 25, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_addreaders->end();
+    } // Fl_Group* group_addreaders
+    { // Add loans
+      group_addloans = new Fl_Group(0, 25, 540, 350);
+      group_addloans->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(170, 25, 10, 30, "Add Loans");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { new Fl_Input(55, 60, 65, 30, "Book ID");
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(430, 175, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(10, 200, 525, 30, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 230, 535, 140);
+      } // Fl_Browser* o
+      { new Fl_Input(85, 160, 235, 40, "Search term:");
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(320, 175, 105, 25, "Search:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { new Fl_Input(190, 60, 65, 30, "Reader ID");
+      } // Fl_Input* o
+      { new Fl_Input(310, 60, 65, 30, "Loan ID");
+      } // Fl_Input* o
+      { Fl_Check_Button* o = new Fl_Check_Button(375, 60, 110, 30, "auto-generate");
+        o->down_box(FL_DOWN_BOX);
+      } // Fl_Check_Button* o
+      { new Fl_Input(175, 90, 85, 30, "Expiry date (yyyy-mm-dd): ");
+      } // Fl_Input* o
+      { Fl_Text_Display* o = new Fl_Text_Display(345, 90, 185, 25, "Current date:");
+        o->align(Fl_Align(FL_ALIGN_LEFT));
+      } // Fl_Text_Display* o
+      { Fl_Button* o = new Fl_Button(225, 120, 310, 30, "ADD LOAN");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(0, 120, 220, 30, "Undo last loan");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(5, 25, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_addloans->end();
+    } // Fl_Group* group_addloans
+    { // edit books
+      group_editbooks = new Fl_Group(0, 25, 540, 335);
+      group_editbooks->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(205, 210, 10, 30, "Search");
+        o->labelsize(31);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(95, 240, 235, 30, "Search term:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(330, 240, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 220, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 265, 535, 90);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(0, 25, 70, 30, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(165, 25, 10, 30, "Edit Books");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(45, 60, 410, 30, "Title");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { new Fl_Button(460, 60, 80, 30, "Check Title");
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(65, 90, 390, 30, "Author");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(80, 120, 160, 30, "Book ID");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(460, 90, 80, 30, "Check Author");
+        o->labelsize(12);
+      } // Fl_Button* o
+      { new Fl_Button(460, 120, 80, 30, "Check Title");
+      } // Fl_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(365, 120, 90, 30, "Non-numeric");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(240, 120, 125, 30, "Automatically check");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Choice* o = new Fl_Choice(65, 150, 200, 25, "Category");
+        o->down_box(FL_BORDER_BOX);
+      } // Fl_Choice* o
+      { Fl_Choice* o = new Fl_Choice(315, 150, 225, 25, "Status");
+        o->down_box(FL_BORDER_BOX);
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(225, 175, 315, 40, "EDIT BOOK");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(5, 175, 210, 40, "Undo last edit");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_editbooks->end();
+    } // Fl_Group* group_editbooks
+    { // delete books
+      group_deletebooks = new Fl_Group(0, 25, 540, 335);
+      group_deletebooks->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(205, 60, 10, 30, "Search");
+        o->labelsize(31);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(95, 90, 235, 30, "Search term:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(330, 95, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 75, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 125, 535, 90);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(0, 25, 70, 30, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(155, 25, 10, 30, "Delete Books");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(70, 215, 120, 35, "Book ID:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(330, 215, 210, 35, "DELETE BOOK");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(190, 215, 140, 35, "Undo last delete");
+        o->labelsize(16);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(175, 250, 10, 30, "Search deleted books");
+        o->labelsize(21);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 275, 535, 85);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(5, 250, 170, 25, "Restore selected");
+        o->labelsize(16);
+      } // Fl_Button* o
+      group_deletebooks->end();
+    } // Fl_Group* group_deletebooks
+    { // Edit readers
+      group_editreaders = new Fl_Group(0, 25, 540, 345);
+      group_editreaders->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(150, 25, 10, 30, "Edit Readers");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(60, 60, 380, 30, "Name");
+        o->labelsize(21);
+      } // Fl_Input* o
+      { new Fl_Button(440, 60, 100, 30, "Check Name");
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(70, 90, 370, 30, "Surname");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(45, 120, 20, 30, "Grade");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(440, 90, 100, 30, "Check Surname");
+        o->labelsize(12);
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(110, 120, 20, 30, "Class");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Input* o = new Fl_Input(200, 120, 105, 30, "Reader ID");
+        o->labelsize(15);
+      } // Fl_Input* o
+      { Fl_Check_Button* o = new Fl_Check_Button(305, 140, 90, 30, "Non-numeric");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(12);
+      } // Fl_Check_Button* o
+      { Fl_Check_Button* o = new Fl_Check_Button(305, 120, 170, 30, "Automatically check ID");
+        o->down_box(FL_DOWN_BOX);
+        o->labelsize(13);
+      } // Fl_Check_Button* o
+      { new Fl_Button(460, 120, 80, 30, "Check ID");
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(250, 165, 290, 40, "EDIT READER");
+        o->labelsize(31);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(0, 165, 245, 40, "Undo last add");
+        o->labelsize(25);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(210, 205, 10, 30, "Search");
+        o->labelsize(32);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Choice* o = new Fl_Choice(330, 255, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 235, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 280, 535, 90);
+      } // Fl_Browser* o
+      { new Fl_Input(90, 240, 240, 40, "Search term:");
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(5, 25, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_editreaders->end();
+    } // Fl_Group* group_editreaders
+    { // Delete readers
+      group_deletereaders = new Fl_Group(0, 25, 540, 340);
+      group_deletereaders->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(205, 60, 10, 30, "Search");
+        o->labelsize(31);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(95, 90, 235, 30, "Search term:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(330, 95, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(435, 75, 105, 45, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 125, 535, 90);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(0, 25, 70, 30, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(130, 25, 10, 30, "Delete Readers");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Input* o = new Fl_Input(70, 215, 120, 35, "Book ID:");
+        o->labelsize(16);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(330, 215, 210, 35, "DELETE READER");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(190, 215, 140, 35, "Undo last delete");
+        o->labelsize(16);
+      } // Fl_Button* o
+      { Fl_Text_Display* o = new Fl_Text_Display(175, 250, 10, 30, "Search deleted readers");
+        o->labelsize(21);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 275, 535, 85);
+      } // Fl_Browser* o
+      { Fl_Button* o = new Fl_Button(5, 250, 170, 25, "Restore selected");
+        o->labelsize(16);
+      } // Fl_Button* o
+      group_deletereaders->end();
+    } // Fl_Group* group_deletereaders
+    { // Edit loans
+      group_editloans = new Fl_Group(0, 25, 540, 355);
+      group_editloans->hide();
+      { Fl_Text_Display* o = new Fl_Text_Display(170, 25, 10, 30, "Edit Loans");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { new Fl_Input(55, 60, 65, 30, "Book ID");
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(430, 175, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(10, 200, 525, 30, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 230, 535, 140);
+      } // Fl_Browser* o
+      { new Fl_Input(85, 160, 235, 40, "Search term:");
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(320, 175, 105, 25, "Search:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { new Fl_Input(190, 60, 65, 30, "Reader ID");
+      } // Fl_Input* o
+      { new Fl_Input(310, 60, 65, 30, "Loan ID");
+      } // Fl_Input* o
+      { Fl_Check_Button* o = new Fl_Check_Button(375, 60, 110, 30, "auto-generate");
+        o->down_box(FL_DOWN_BOX);
+      } // Fl_Check_Button* o
+      { new Fl_Input(175, 90, 85, 30, "Expiry date (yyyy-mm-dd): ");
+      } // Fl_Input* o
+      { Fl_Text_Display* o = new Fl_Text_Display(345, 90, 185, 25, "Current date:");
+        o->align(Fl_Align(FL_ALIGN_LEFT));
+      } // Fl_Text_Display* o
+      { Fl_Button* o = new Fl_Button(225, 120, 310, 30, "EDIT LOAN");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(0, 120, 220, 30, "Undo last loan edit");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(5, 25, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      group_editloans->end();
+    } // Fl_Group* group_editloans
+    { // mark loans 
+      group_markloans = new Fl_Group(0, 25, 545, 350);
+      { Fl_Text_Display* o = new Fl_Text_Display(170, 25, 10, 30, "Mark Loans");
+        o->labelsize(41);
+        o->align(Fl_Align(520));
+      } // Fl_Text_Display* o
+      { Fl_Choice* o = new Fl_Choice(430, 75, 105, 25, "Search by:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(10, 100, 525, 30, "SEARCH");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { // Search results, click to fill text fields
+        new Fl_Browser(5, 130, 535, 140);
+      } // Fl_Browser* o
+      { new Fl_Input(90, 60, 235, 40, "Search term:");
+      } // Fl_Input* o
+      { Fl_Choice* o = new Fl_Choice(325, 75, 105, 25, "Search:");
+        o->down_box(FL_BORDER_BOX);
+        o->labelsize(17);
+        o->align(Fl_Align(FL_ALIGN_TOP));
+      } // Fl_Choice* o
+      { Fl_Button* o = new Fl_Button(5, 25, 75, 35, "HELP");
+        o->labelsize(21);
+      } // Fl_Button* o
+      { Fl_Input* o = new Fl_Input(140, 275, 100, 30, "Prolong by (days)");
+        o->labelsize(17);
+      } // Fl_Input* o
+      { Fl_Button* o = new Fl_Button(240, 275, 140, 30, "Prolong");
+        o->labelsize(18);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(385, 275, 150, 30, "Mark as returned");
+        o->labelsize(18);
+      } // Fl_Button* o
+      { Fl_Button* o = new Fl_Button(385, 310, 150, 30, "Mark as lost");
+        o->labelsize(18);
+      } // Fl_Button* o
+      group_markloans->end();
+    } // Fl_Group* group_markloans
     o->end();
   } // Fl_Double_Window* o
-  return w;
+  { window_assistant = new Fl_Double_Window(421, 166, "Merlin the Mole - your assistant");
+    { Fl_Text_Display* o = new Fl_Text_Display(0, 0, 10, 25, "Merlin the Mole");
+      o->labelsize(21);
+      o->align(Fl_Align(FL_ALIGN_RIGHT));
+    } // Fl_Text_Display* o
+    { // The image of the agent
+      assistant_image = new Fl_Image(0, 25, 145, 135);
+      assistant_image->box(FL_NO_BOX);
+      assistant_image->color(FL_BACKGROUND_COLOR);
+      assistant_image->selection_color(FL_BACKGROUND_COLOR);
+      assistant_image->labeltype(FL_NORMAL_LABEL);
+      assistant_image->labelfont(0);
+      assistant_image->labelsize(14);
+      assistant_image->labelcolor(FL_FOREGROUND_COLOR);
+      assistant_image->align(Fl_Align(FL_ALIGN_CENTER));
+      assistant_image->when(FL_WHEN_RELEASE);
+    } // Fl_Image* assistant_image
+    { Fl_Input* o = new Fl_Input(145, 140, 190, 25, "Your question:");
+      o->align(Fl_Align(FL_ALIGN_TOP));
+    } // Fl_Input* o
+    { Fl_Button* o = new Fl_Button(335, 140, 85, 25, "Submit");
+      o->labelsize(16);
+    } // Fl_Button* o
+    { new Fl_Text_Display(160, 15, 255, 110, "Answer");
+    } // Fl_Text_Display* o
+    { Fl_Button* o = new Fl_Button(360, 0, 55, 15, "Close");
+      o->color((Fl_Color)41);
+    } // Fl_Button* o
+    window_assistant->end();
+  } // Fl_Double_Window* window_assistant
+  return window_assistant;
+}
+
+/**
+ Hides all groups
+*/
+void hide_all_groups() {
+  group_register.hide();
+  group_login().hide;
+  group_addbooks().hide;
+  group_addreaders().hide;
+  group_addloans().hide;
 }

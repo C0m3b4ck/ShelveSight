@@ -5,8 +5,8 @@ code_name {.cxx}
 Function {make_window()} {open
 } {
   Fl_Window {} {
-    label Bookworm open
-    xywh {355 219 564 386} type Double resizable visible
+    label ShelfSeeker open
+    xywh {380 170 542 378} type Double resizable visible
   } {
     Fl_Group group_register {
       comment Register
@@ -204,8 +204,8 @@ Function {make_window()} {open
       }
     }
     Fl_Group group_addbooks {
-      comment {Add Books}
-      xywh {0 25 540 345} hide
+      comment {Add Books} selected
+      xywh {0 25 540 345}
     } {
       Fl_Text_Display {} {
         label {Add Books}
@@ -371,6 +371,7 @@ Function {make_window()} {open
       }
     }
     Fl_Group group_addloans {
+      comment {Add loans}
       xywh {0 25 540 350} hide
     } {
       Fl_Text_Display {} {
@@ -435,6 +436,7 @@ Function {make_window()} {open
       }
     }
     Fl_Group group_editbooks {
+      comment {edit books}
       xywh {0 25 540 335} hide
     } {
       Fl_Text_Display {} {
@@ -515,6 +517,7 @@ Function {make_window()} {open
       }
     }
     Fl_Group group_deletebooks {
+      comment {delete books}
       xywh {0 25 540 335} hide
     } {
       Fl_Text_Display {} {
@@ -571,6 +574,7 @@ Function {make_window()} {open
       }
     }
     Fl_Group group_editreaders {
+      comment {Edit readers}
       xywh {0 25 540 345} hide
     } {
       Fl_Text_Display {} {
@@ -650,12 +654,180 @@ Function {make_window()} {open
         xywh {5 25 75 35} labelsize 21
       }
     }
-    Fl_Group group_deletereaders {open selected
-      xywh {0 25 540 340}
-    } {}
+    Fl_Group group_deletereaders {
+      comment {Delete readers}
+      xywh {0 25 540 340} hide
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 60 10 30} labelsize 31 align 520
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {95 90 235 30} labelsize 16
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 95 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 75 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 125 535 90}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Delete Readers}
+        xywh {130 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID:}
+        xywh {70 215 120 35} labelsize 16
+      }
+      Fl_Button {} {
+        label {DELETE READER}
+        xywh {330 215 210 35} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last delete}
+        xywh {190 215 140 35} labelsize 16
+      }
+      Fl_Text_Display {} {
+        label {Search deleted readers}
+        xywh {175 250 10 30} labelsize 21 align 520
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 275 535 85}
+      }
+      Fl_Button {} {
+        label {Restore selected}
+        xywh {5 250 170 25} labelsize 16
+      }
+    }
+    Fl_Group group_editloans {
+      comment {Edit loans}
+      xywh {0 25 540 355} hide
+    } {
+      Fl_Text_Display {} {
+        label {Edit Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID}
+        xywh {55 60 65 30}
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {430 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {10 200 525 30} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 230 535 140}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {85 160 235 40}
+      }
+      Fl_Choice {} {
+        label {Search:} open
+        xywh {320 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {190 60 65 30}
+      }
+      Fl_Input {} {
+        label {Loan ID}
+        xywh {310 60 65 30}
+      }
+      Fl_Check_Button {} {
+        label {auto-generate}
+        xywh {375 60 110 30} down_box DOWN_BOX
+      }
+      Fl_Input {} {
+        label {Expiry date (yyyy-mm-dd): }
+        xywh {175 90 85 30}
+      }
+      Fl_Text_Display {} {
+        label {Current date:}
+        xywh {345 90 185 25} align 4
+      }
+      Fl_Button {} {
+        label {EDIT LOAN}
+        xywh {225 120 310 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last loan edit}
+        xywh {0 120 220 30} labelsize 21
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_markloans {
+      comment {mark loans }
+      xywh {0 25 545 350} hide
+    } {
+      Fl_Text_Display {} {
+        label {Mark Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {430 75 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {10 100 525 30} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 130 535 140}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {90 60 235 40}
+      }
+      Fl_Choice {} {
+        label {Search:} open
+        xywh {325 75 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+      Fl_Input {} {
+        label {Prolong by (days)}
+        xywh {140 275 100 30} labelsize 17
+      }
+      Fl_Button {} {
+        label Prolong
+        xywh {240 275 140 30} labelsize 18
+      }
+      Fl_Button {} {
+        label {Mark as returned}
+        xywh {385 275 150 30} labelsize 18
+      }
+      Fl_Button {} {
+        label {Mark as lost}
+        xywh {385 310 150 30} labelsize 18
+      }
+    }
   }
   Fl_Window window_assistant {
-    label {Merlin the Mole - your Bookworm assistant}
+    label {Merlin the Mole - your assistant}
     xywh {563 321 421 166} type Double hide
   } {
     Fl_Text_Display {} {
