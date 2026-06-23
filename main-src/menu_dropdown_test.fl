@@ -1,0 +1,705 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0309
+header_name {.h}
+code_name {.cxx}
+Function {make_window()} {open
+} {
+  Fl_Window {} {
+    label Bookworm open
+    xywh {355 219 564 386} type Double resizable visible
+  } {
+    Fl_Group group_register {
+      comment Register
+      xywh {0 25 530 340} hide resizable
+    } {
+      Fl_Text_Display {} {
+        label Register
+        xywh {195 25 155 0} labelsize 41 align 34
+      }
+      Fl_Input {} {
+        label Username
+        xywh {105 75 420 30} labelsize 19
+      }
+      Fl_Input {} {
+        label Password
+        xywh {105 115 420 30} labelsize 19
+      }
+      Fl_Input {} {
+        label {Password again}
+        xywh {110 155 415 30}
+      }
+      Fl_Input_Choice {} {
+        label Role open
+        xywh {225 190 155 65} color 34 selection_color 34 labelsize 31 textsize 21
+      } {}
+      Fl_Button {} {
+        label Register
+        xywh {375 290 155 75} color 34 selection_color 35 labelsize 31
+      }
+      Fl_Button {} {
+        label Clear
+        xywh {190 290 180 75} color 34 selection_color 35 labelsize 31
+      }
+      Fl_Button {} {
+        label Back
+        xywh {5 290 180 75} color 35 selection_color 35 labelsize 31
+      }
+    }
+    Fl_Menu_Button menubtn_books {
+      label Books
+      xywh {0 0 55 25}
+    } {
+      MenuItem {} {
+        label {Add Books}
+        user_data add_books
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Edit Books}
+        user_data edit_books
+        callback {MENU_BTN_CB()}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Remove Books}
+        user_data remove_books
+        callback {MENU_BTN_CB()}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Manage Categories}
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button menubtn_readers {
+      label Readers
+      xywh {55 0 70 25}
+    } {
+      MenuItem {} {
+        label {Add Readers}
+        user_data add_readers
+        callback {MENU_BTN_CB()}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Edit Readers}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Remove Readers}
+        user_data remove_readers
+        callback {MENU_BTN_CB()}
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button menubtn_loans {
+      label Loans
+      xywh {125 0 60 25}
+    } {
+      MenuItem {} {
+        label {Add Loans}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Edit Loans}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Remove Loans}
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label {Expired Loans}
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button menubtn_databases {
+      label Databases
+      xywh {185 0 85 25}
+    } {
+      Submenu submenu_backup {
+        label Backup open
+        xywh {0 0 100 20}
+      } {
+        MenuItem {} {
+          label Offline
+          xywh {0 0 100 20}
+        }
+        Submenu submenu_online {
+          label Online open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {Direct connection}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Local peer-to-peer (LAN)}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Online peer-to-peer (internet)}
+            xywh {0 0 100 20}
+          }
+        }
+      }
+    }
+    Fl_Menu_Button menubtn_settings {
+      label Settings
+      xywh {270 0 65 25}
+    } {
+      MenuItem {} {
+        label Account
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label Networking
+        xywh {0 0 100 20}
+      }
+      MenuItem {} {
+        label Other
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button menubtn_login {
+      label {Log in/out}
+      xywh {335 0 80 25}
+    } {}
+    Fl_Menu_Button menubtn_register {
+      label Register
+      xywh {415 0 75 25}
+    } {}
+    Fl_Group group_login {
+      comment Login
+      xywh {0 25 535 340} hide
+    } {
+      Fl_Text_Display {} {
+        label Login
+        xywh {200 30 155 0} labelsize 41 align 34
+      }
+      Fl_Input {} {
+        label Username
+        xywh {110 80 425 30} labelsize 19
+      }
+      Fl_Input {} {
+        label Password
+        xywh {110 120 425 30} labelsize 19
+      }
+      Fl_Button {} {
+        label Register
+        xywh {360 160 175 185} color 34 selection_color 35 labelsize 31
+      }
+      Fl_Button {} {
+        label Clear
+        xywh {180 160 175 185} color 34 selection_color 35 labelsize 31
+      }
+      Fl_Button {} {
+        label Back
+        xywh {10 160 160 185} color 35 selection_color 35 labelsize 31
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 30 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_addbooks {
+      comment {Add Books}
+      xywh {0 25 540 345} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Books}
+        xywh {165 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label Title
+        xywh {45 60 410 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Title}
+        xywh {460 60 80 30}
+      }
+      Fl_Input {} {
+        label Author
+        xywh {65 90 390 30} labelsize 21
+      }
+      Fl_Input {} {
+        label {Book ID}
+        xywh {80 120 160 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Author}
+        xywh {460 90 80 30} labelsize 12
+      }
+      Fl_Button {} {
+        label {Check Title}
+        xywh {460 120 80 30}
+      }
+      Fl_Check_Button {} {
+        label {Non-numeric}
+        xywh {365 120 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {} {
+        label {Automatically check}
+        xywh {240 120 125 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Choice {} {
+        label Category open
+        xywh {65 150 200 25} down_box BORDER_BOX
+      } {}
+      Fl_Choice {} {
+        label Status open
+        xywh {315 150 225 25} down_box BORDER_BOX
+      } {}
+      Fl_Button {} {
+        label {ADD BOOK}
+        xywh {225 175 315 40} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last add}
+        xywh {5 175 210 40} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 215 10 30} labelsize 31 align 520
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {95 245 235 30} labelsize 16
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 245 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 225 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 270 535 90}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {0 30 70 30} labelsize 21
+      }
+    }
+    Fl_Menu_Button menubtn_clear {
+      label Clear
+      comment {Clears workspace - shows backdrop} open
+      xywh {485 0 55 25}
+    } {}
+    Fl_Group group_addreaders {
+      comment {Add Readers}
+      xywh {-10 25 555 345} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Readers}
+        xywh {150 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label Name
+        xywh {60 60 380 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Name}
+        xywh {440 60 100 30}
+      }
+      Fl_Input {} {
+        label Surname
+        xywh {70 90 370 30} labelsize 16
+      }
+      Fl_Input {} {
+        label Grade
+        xywh {45 120 20 30} labelsize 15
+      }
+      Fl_Button {} {
+        label {Check Surname}
+        xywh {440 90 100 30} labelsize 12
+      }
+      Fl_Input {} {
+        label Class
+        xywh {110 120 20 30} labelsize 15
+      }
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {200 120 105 30} labelsize 15
+      }
+      Fl_Check_Button {} {
+        label {Non-numeric}
+        xywh {305 140 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {} {
+        label {Automatically check ID}
+        xywh {305 120 170 30} down_box DOWN_BOX labelsize 13
+      }
+      Fl_Button {} {
+        label {Check ID}
+        xywh {460 120 80 30}
+      }
+      Fl_Button {} {
+        label {ADD READER}
+        xywh {250 165 290 40} labelsize 31
+      }
+      Fl_Button {} {
+        label {Undo last add}
+        xywh {0 165 245 40} labelsize 25
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {210 205 10 30} labelsize 32 align 520
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 255 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 235 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 280 535 90}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {90 240 240 40}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_addloans {
+      xywh {0 25 540 350} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID}
+        xywh {55 60 65 30}
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {430 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {10 200 525 30} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 230 535 140}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {85 160 235 40}
+      }
+      Fl_Choice {} {
+        label {Search:} open
+        xywh {320 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {190 60 65 30}
+      }
+      Fl_Input {} {
+        label {Loan ID}
+        xywh {310 60 65 30}
+      }
+      Fl_Check_Button {} {
+        label {auto-generate}
+        xywh {375 60 110 30} down_box DOWN_BOX
+      }
+      Fl_Input {} {
+        label {Expiry date (yyyy-mm-dd): }
+        xywh {175 90 85 30}
+      }
+      Fl_Text_Display {} {
+        label {Current date:}
+        xywh {345 90 185 25} align 4
+      }
+      Fl_Button {} {
+        label {ADD LOAN}
+        xywh {225 120 310 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last loan}
+        xywh {0 120 220 30} labelsize 21
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_editbooks {
+      xywh {0 25 540 335} hide
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 210 10 30} labelsize 31 align 520
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {95 240 235 30} labelsize 16
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 240 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 220 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 265 535 90}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Edit Books}
+        xywh {165 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label Title
+        xywh {45 60 410 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Title}
+        xywh {460 60 80 30}
+      }
+      Fl_Input {} {
+        label Author
+        xywh {65 90 390 30} labelsize 21
+      }
+      Fl_Input {} {
+        label {Book ID}
+        xywh {80 120 160 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Author}
+        xywh {460 90 80 30} labelsize 12
+      }
+      Fl_Button {} {
+        label {Check Title}
+        xywh {460 120 80 30}
+      }
+      Fl_Check_Button {} {
+        label {Non-numeric}
+        xywh {365 120 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {} {
+        label {Automatically check}
+        xywh {240 120 125 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Choice {} {
+        label Category open
+        xywh {65 150 200 25} down_box BORDER_BOX
+      } {}
+      Fl_Choice {} {
+        label Status open
+        xywh {315 150 225 25} down_box BORDER_BOX
+      } {}
+      Fl_Button {} {
+        label {EDIT BOOK}
+        xywh {225 175 315 40} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last edit}
+        xywh {5 175 210 40} labelsize 21
+      }
+    }
+    Fl_Group group_deletebooks {
+      xywh {0 25 540 335} hide
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 60 10 30} labelsize 31 align 520
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {95 90 235 30} labelsize 16
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 95 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 75 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 125 535 90}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Delete Books}
+        xywh {155 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID:}
+        xywh {70 215 120 35} labelsize 16
+      }
+      Fl_Button {} {
+        label {DELETE BOOK}
+        xywh {330 215 210 35} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last delete}
+        xywh {190 215 140 35} labelsize 16
+      }
+      Fl_Text_Display {} {
+        label {Search deleted books}
+        xywh {175 250 10 30} labelsize 21 align 520
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 275 535 85}
+      }
+      Fl_Button {} {
+        label {Restore selected}
+        xywh {5 250 170 25} labelsize 16
+      }
+    }
+    Fl_Group group_editreaders {
+      xywh {0 25 540 345} hide
+    } {
+      Fl_Text_Display {} {
+        label {Edit Readers}
+        xywh {150 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label Name
+        xywh {60 60 380 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Name}
+        xywh {440 60 100 30}
+      }
+      Fl_Input {} {
+        label Surname
+        xywh {70 90 370 30} labelsize 16
+      }
+      Fl_Input {} {
+        label Grade
+        xywh {45 120 20 30} labelsize 15
+      }
+      Fl_Button {} {
+        label {Check Surname}
+        xywh {440 90 100 30} labelsize 12
+      }
+      Fl_Input {} {
+        label Class
+        xywh {110 120 20 30} labelsize 15
+      }
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {200 120 105 30} labelsize 15
+      }
+      Fl_Check_Button {} {
+        label {Non-numeric}
+        xywh {305 140 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {} {
+        label {Automatically check ID}
+        xywh {305 120 170 30} down_box DOWN_BOX labelsize 13
+      }
+      Fl_Button {} {
+        label {Check ID}
+        xywh {460 120 80 30}
+      }
+      Fl_Button {} {
+        label {EDIT READER}
+        xywh {250 165 290 40} labelsize 31
+      }
+      Fl_Button {} {
+        label {Undo last add}
+        xywh {0 165 245 40} labelsize 25
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {210 205 10 30} labelsize 32 align 520
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 255 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 235 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 280 535 90}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {90 240 240 40}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_deletereaders {open selected
+      xywh {0 25 540 340}
+    } {}
+  }
+  Fl_Window window_assistant {
+    label {Merlin the Mole - your Bookworm assistant}
+    xywh {563 321 421 166} type Double hide
+  } {
+    Fl_Text_Display {} {
+      label {Merlin the Mole}
+      xywh {0 0 10 25} labelsize 21 align 8
+    }
+    Fl_Box assistant_image {
+      comment {The image of the agent}
+      xywh {0 25 145 135}
+      class Fl_Image
+    }
+    Fl_Input {} {
+      label {Your question:}
+      xywh {145 140 190 25} align 1
+    }
+    Fl_Button {} {
+      label Submit
+      xywh {335 140 85 25} labelsize 16
+    }
+    Fl_Text_Display {} {
+      label Answer
+      xywh {160 15 255 110}
+    }
+    Fl_Button {} {
+      label Close
+      xywh {360 0 55 15} color 41
+    }
+  }
+}
+
+Function {MENU_BTN_CB()} {
+  comment {Buttons from toolbar} open
+} {}
+
+Function {BTN_CB()} {
+  comment {For non-menu buttons (the ones in groups)} open
+} {}
+
+Function {hide_all_groups()} {
+  comment {Hides all groups}
+} {
+  code {group_register.hide();
+group_login().hide;
+group_addbooks().hide;
+group_addreaders().hide;
+group_addloans().hide;} {}
+}
