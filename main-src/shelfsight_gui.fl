@@ -1,0 +1,1118 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0311
+header_name {.h}
+code_name {.cxx}
+Function {make_window()} {open
+} {
+  Fl_Window window_assistant {
+    label {Merlin the Mole - your assistant}
+    xywh {563 321 421 166} type Double hide
+  } {
+    Fl_Text_Display {} {
+      label {Merlin the Mole}
+      xywh {0 0 10 25} labelsize 21 align 8
+    }
+    Fl_Box assistant_image {
+      comment {The image of the agent}
+      xywh {0 25 145 135}
+      class Fl_Image
+    }
+    Fl_Input {} {
+      label {Your question:}
+      xywh {145 140 190 25} align 1
+    }
+    Fl_Button {} {
+      label Submit
+      xywh {335 140 85 25} labelsize 16
+    }
+    Fl_Text_Display {} {
+      label Answer
+      xywh {160 15 255 110}
+    }
+    Fl_Button {} {
+      label Close
+      xywh {360 0 55 15} color 41
+    }
+  }
+  Fl_Window {} {
+    label ShelfSight open
+    xywh {408 168 542 373} type Double resizable visible
+  } {
+    Fl_Menu_Button mnubtn_books {
+      label Books
+      xywh {0 0 55 25}
+    } {
+      MenuItem mnu_addbooks {
+        label {Add Books}
+        user_data add_books
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_editbooks {
+        label {Edit Books}
+        user_data edit_books
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_removebooks {
+        label {Remove Books}
+        user_data remove_books
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_managecategories {
+        label {Manage Categories}
+        user_data manage_categories
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button mnubtn_readers {
+      label Readers
+      xywh {55 0 70 25}
+    } {
+      MenuItem mnu_addreaders {
+        label {Add Readers}
+        user_data add_readers
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_editreaders {
+        label {Edit Readers}
+        user_data edit_readers
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_removereaders {
+        label {Remove Readers}
+        user_data remove_readers
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_importreaders {
+        label {Import readers}
+        user_data import_readers
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button mnubtn_loans {
+      label Loans
+      xywh {125 0 60 25}
+    } {
+      MenuItem mnu_addloans {
+        label {Add Loans}
+        user_data add_loans
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_editloans {
+        label {Edit Loans}
+        user_data edit_loans
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_removeloans {
+        label {Remove Loans}
+        user_data remove_loans
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_expiredloans {
+        label {Expired Loans}
+        user_data expired_loans
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button mnubtn_databases {
+      label Databases
+      xywh {185 0 85 25}
+    } {
+      MenuItem mnu_loaddefaultdbs {
+        label {Load Default DBs}
+        xywh {0 0 100 20}
+      }
+      Submenu sbmnu_backup {
+        label Backup
+        xywh {0 0 100 20}
+      } {
+        MenuItem mnu_offlinebackup {
+          label Offline
+          user_data backup_offline
+          callback MENU_BTN_CB
+          xywh {0 0 100 20}
+        }
+        Submenu sbmnu_online {
+          label Online open
+          xywh {0 0 100 20}
+        } {
+          MenuItem mnu_directconnection {
+            label {Direct connection}
+            user_data backup_directconnection
+            callback MENU_BTN_CB
+            xywh {0 0 100 20}
+          }
+          MenuItem mnu_localp2p {
+            label {Local peer-to-peer (LAN)}
+            user_data backup_localp2p
+            callback MENU_BTN_CB
+            xywh {0 0 100 20}
+          }
+          MenuItem mnu_onlinep2p {
+            label {Online peer-to-peer (internet)}
+            user_data backup_onlinep2p
+            callback MENU_BTN_CB
+            xywh {0 0 100 20}
+          }
+        }
+      }
+      Submenu sbmnu_managedbs {
+        label Manage
+        xywh {0 0 100 20}
+      } {
+        MenuItem mnu_adddb {
+          label {Add Database}
+          xywh {0 0 100 20}
+        }
+        MenuItem mnu_editdb {
+          label {Edit Database}
+          xywh {0 0 100 20}
+        }
+        MenuItem mnu_selectcurrentdbs {
+          label {Select current DBs}
+          xywh {0 0 100 20}
+        }
+        MenuItem mnu_selectdefaultdbs {
+          label {Select default (persistent)}
+          xywh {0 0 100 20}
+        }
+      }
+    }
+    Fl_Menu_Button mnubtn_settings {
+      label Settings
+      xywh {270 0 65 25}
+    } {
+      MenuItem mnu_account {
+        label Account
+        user_data settings_account
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_theme {
+        label Theme
+        user_data settings_theme
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_performance {
+        label Performance
+        user_data settings_performance
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_networking {
+        label Networking
+        user_data settings_networking
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+      MenuItem mnu_other {
+        label Other
+        user_data settings_other
+        callback MENU_BTN_CB
+        xywh {0 0 100 20}
+      }
+    }
+    Fl_Menu_Button mnubtn_login {
+      label {Log in/out}
+      user_data login_show
+      callback MENU_BTN_CB
+      xywh {335 0 80 25}
+    } {}
+    Fl_Menu_Button mnubtn_register {
+      label Register
+      user_data register_show
+      callback MENU_BTN_CB
+      xywh {415 0 75 25}
+    } {}
+    Fl_Menu_Button menubtn_clear {
+      label Clear
+      user_data clear_workspace
+      callback MENU_BTN_CB
+      comment {Clears workspace - shows backdrop}
+      xywh {485 0 55 25}
+    } {}
+    Fl_Group group_register {
+      comment Register
+      xywh {0 25 540 335} hide resizable
+    } {
+      Fl_Text_Display {} {
+        label Register
+        xywh {195 25 155 0} labelsize 41 align 34
+      }
+      Fl_Input {inp_usr-reg} {
+        label Username
+        xywh {105 95 435 30} labelsize 19
+      }
+      Fl_Input {inp_pwd1-reg} {
+        label Password
+        xywh {105 135 435 30} labelsize 19
+      }
+      Fl_Input {inp_pwd2-reg} {
+        label {Password again}
+        xywh {120 170 420 30}
+      }
+      Fl_Input_Choice {cic_role-reg} {
+        label Role open
+        xywh {325 200 195 65} color 34 selection_color 34 labelsize 31 textsize 21
+      } {}
+      Fl_Button {btn_reg-reg} {
+        label Register
+        user_data REG
+        callback BTN_CB
+        xywh {375 290 155 70} color 25 selection_color 35 labelsize 31
+      }
+      Fl_Button {btn_clear-reg} {
+        label Clear
+        user_data CLS
+        callback BTN_CB
+        xywh {190 290 180 70} color 25 selection_color 35 labelsize 31
+      }
+      Fl_Button {btn_back-reg} {
+        label Back
+        user_data BACK
+        callback BTN_CB
+        xywh {5 290 180 70} color 25 selection_color 27 labelsize 31
+      }
+      Fl_Check_Button {chk_showpwd-reg} {
+        label {Show password}
+        user_data showpwd_reg
+        callback BTN_CB
+        xywh {15 200 35 40} down_box DOWN_BOX labelsize 25
+      }
+      Fl_Button {btn_help-reg} {
+        label HELP
+        user_data HELP_REG
+        callback BTN_CB
+        xywh {5 30 65 30} labelsize 25
+      }
+    }
+    Fl_Group group_login {
+      comment Login
+      xywh {0 25 540 340} hide
+    } {
+      Fl_Text_Display {} {
+        label Login
+        xywh {200 30 155 0} labelsize 41 align 34
+      }
+      Fl_Input {inp_usr-log} {
+        label Username
+        xywh {110 90 425 30} labelsize 19
+      }
+      Fl_Input {inp_pwd-log} {
+        label Password
+        xywh {110 125 425 30} labelsize 19
+      }
+      Fl_Check_Button {chk_showpwd-log} {
+        label {Show password}
+        user_data showpwd_log
+        callback BTN_CB
+        xywh {20 175 25 25} down_box DOWN_BOX labelsize 31
+      }
+      Fl_Button {btn_login-log} {
+        label LOGIN
+        user_data LOGIN
+        callback BTN_CB
+        xywh {365 230 175 130} color 25 selection_color 35 labelsize 31
+      }
+      Fl_Button {btn_cls-log} {
+        label Clear
+        user_data CLS
+        callback BTN_CB
+        xywh {180 230 180 130} color 25 selection_color 35 labelsize 31
+      }
+      Fl_Button {btn_back-log} {
+        label Back
+        user_data BACK
+        callback BTN_CB
+        xywh {10 230 160 130} color 25 selection_color 35 labelsize 31
+      }
+      Fl_Button {btn_help-log} {
+        label HELP
+        user_data HELP_LOG
+        callback BTN_CB
+        xywh {5 30 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_addbooks {
+      comment {Add Books}
+      xywh {0 25 540 335} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Books}
+        xywh {165 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {inp_title-addbk} {
+        label Title
+        xywh {50 60 410 30} labelsize 21
+      }
+      Fl_Input {inp_id-addbk} {
+        label {Book ID}
+        xywh {85 120 160 30} labelsize 21
+      }
+      Fl_Input {inp_author-addbk} {
+        label Author
+        xywh {75 90 385 30} labelsize 21
+      }
+      Fl_Button {btn_checkitle-addbk} {
+        label {Check Title}
+        user_data checktitle_addbk
+        callback BTN_CB
+        comment {Checks if title already exists}
+        xywh {460 60 80 30}
+      }
+      Fl_Button {btn_checkauthor-addbk} {
+        label {Check Author}
+        user_data checkauthor_addbk
+        callback BTN_CB
+        comment {Check if author already exists}
+        xywh {460 90 80 30} labelsize 12
+      }
+      Fl_Button {btn_checkid-addbk} {
+        label {Check ID}
+        user_data {checkid-addbk}
+        callback BTN_CB
+        comment {Checks f ID already exists}
+        xywh {460 120 80 30}
+      }
+      Fl_Check_Button {chk_nonnumeric-addbk} {
+        label {Non-numeric}
+        user_data nonnumeric_addbk
+        callback BTN_CB
+        xywh {370 120 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {chk_automaticallycheckid-addbk} {
+        label {Automatically check ID}
+        user_data {automaticallycheckid-addbk}
+        callback BTN_CB
+        xywh {240 120 125 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Choice {cic_category-addbk} {
+        label Category
+        user_data category_addbk
+        callback BTN_CB open
+        xywh {65 150 200 25} down_box BORDER_BOX
+      } {}
+      Fl_Choice {cic_status-addbk} {
+        label Status
+        user_data status_addbk
+        callback BTN_CB open
+        xywh {315 150 225 25} down_box BORDER_BOX
+      } {}
+      Fl_Button {btn_addbook-addbk} {
+        label {ADD BOOK}
+        user_data ADDBOOK
+        callback BTN_CB
+        xywh {225 175 315 40} labelsize 21
+      }
+      Fl_Button {btn_undoadd-addbk} {
+        label {Undo last add}
+        user_data undoadd_addbk
+        callback BTN_CB
+        xywh {5 175 210 40} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 215 10 30} labelsize 31 align 520
+      }
+      Fl_Input {inp_search-addbk} {
+        label {Search term:}
+        xywh {95 245 235 30} labelsize 16
+      }
+      Fl_Choice {cic_searchby-addbk} {
+        label {Search by:}
+        user_data searchby_addbk
+        callback BTN_CB open
+        xywh {330 245 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {btn_search-addbk} {
+        label SEARCH
+        user_data search_addbk
+        callback BTN_CB
+        xywh {435 225 105 45} labelsize 21
+      }
+      Fl_Browser {brw_search-addbk} {
+        user_data browser_addbk
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 270 535 90}
+      }
+      Fl_Button {btn_help-addbk} {
+        label HELP
+        user_data HELP_ADDBK
+        callback BTN_CB
+        xywh {0 30 70 30} labelsize 21
+      }
+    }
+    Fl_Group group_addreaders {
+      comment {Add Readers}
+      xywh {-10 25 555 345} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Readers}
+        xywh {150 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {inp_name-addrdr} {
+        label Name
+        xywh {60 60 380 30} labelsize 21
+      }
+      Fl_Button {btn_name-addrdr} {
+        label {Check Name}
+        user_data checkname_addrdr
+        callback BTN_CB
+        xywh {440 60 100 30}
+      }
+      Fl_Input {inp_surname-addrdr} {
+        label Surname
+        xywh {70 90 370 30} labelsize 16
+      }
+      Fl_Input {inp_grade-addrdr} {
+        label Grade
+        xywh {45 120 20 30} labelsize 15
+      }
+      Fl_Button {btn_checksurname-addrdr} {
+        label {Check Surname}
+        user_data checksurname_addrdr
+        callback BTN_CB
+        xywh {440 90 100 30} labelsize 12
+      }
+      Fl_Input {inp_class-addrdr} {
+        label Class
+        xywh {110 120 20 30} labelsize 15
+      }
+      Fl_Input {inp_readerid-addrdr} {
+        label {Reader ID}
+        xywh {200 120 105 30} labelsize 15
+      }
+      Fl_Check_Button {chk_nonnumeric-addrdr} {
+        label {Non-numeric}
+        user_data nonnumeric_addrdr
+        callback BTN_CB
+        xywh {305 140 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {chk_automaticallycheckid-addrdr} {
+        label {Automatically check ID}
+        user_data automaticallycheckid_addrdr
+        callback BTN_CB
+        xywh {305 120 170 30} down_box DOWN_BOX labelsize 13
+      }
+      Fl_Button {checkid-addrdr} {
+        label {Check ID}
+        user_data checkid_addrdr
+        callback BTN_CB
+        xywh {460 120 80 30}
+      }
+      Fl_Button {btn_addreader-addrdr} {
+        label {ADD READER}
+        user_data addreader_addrdr
+        callback BTN_CB
+        xywh {250 165 290 40} labelsize 31
+      }
+      Fl_Button {btn_undolastadd-addrdr} {
+        label {Undo last add}
+        user_data undolastadd_addrdr
+        callback BTN_CB
+        xywh {0 165 245 40} labelsize 25
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {210 205 10 30} labelsize 32 align 520
+      }
+      Fl_Choice {cic_searchby-addrdr} {
+        label {Search by:}
+        user_data searchby_addrdr
+        callback BTN_CB open
+        xywh {330 255 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {btn_search-addrdr} {
+        label SEARCH
+        user_data search_addrdr
+        callback BTN_CB
+        xywh {435 235 105 45} labelsize 21
+      }
+      Fl_Browser {brw_search-addrdr} {
+        user_data browser_addrdr
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 280 535 90}
+      }
+      Fl_Input {inp_search-addrdr} {
+        label {Search term:}
+        xywh {90 240 240 40}
+      }
+      Fl_Button {btn_help-addrdr} {
+        label HELP
+        user_data HELP_addrdr
+        callback BTN_CB
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_addloans {
+      comment {Add loans}
+      xywh {0 25 540 350} hide
+    } {
+      Fl_Text_Display {} {
+        label {Add Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {inp_bookid-addlns} {
+        label {Book ID}
+        xywh {55 60 65 30}
+      }
+      Fl_Choice {cic_searchby-addlns} {
+        label {Search by:}
+        user_data searchby_addlns
+        callback BTN_CB open
+        xywh {430 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {btn_search-addlns} {
+        label SEARCH
+        user_data search_addlns
+        callback BTN_CB
+        xywh {10 200 525 30} labelsize 21
+      }
+      Fl_Browser {brw_search-addlns} {
+        user_data browser_addlns
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 230 535 140}
+      }
+      Fl_Input {inp_search-addlns} {
+        label {Search term:}
+        xywh {85 160 235 40}
+      }
+      Fl_Choice {cic_searchwhat-addlns} {
+        label {Search what:}
+        user_data searchwhat_addlns
+        callback BTN_CB open
+        xywh {320 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Input {inp_readerid-addlns} {
+        label {Reader ID}
+        xywh {190 60 65 30}
+      }
+      Fl_Input {inp_loanid-addlns} {
+        label {Loan ID}
+        xywh {310 60 65 30}
+      }
+      Fl_Input {inp_expirydate-addlns} {
+        label {Expiry date (yyyy-mm-dd): }
+        xywh {175 90 85 30}
+      }
+      Fl_Check_Button {chk_generate-addlns} {
+        label {Generate ID}
+        user_data generate_addlns
+        callback BTN_CB
+        xywh {375 60 25 25} down_box DOWN_BOX labelsize 17
+      }
+      Fl_Text_Display {} {
+        label {Current date:}
+        xywh {355 90 185 25} align 4
+      }
+      Fl_Button {btn_addloan-addlns} {
+        label {ADD LOAN}
+        user_data ADDLOAN
+        callback BTN_CB
+        xywh {225 120 310 30} labelsize 21
+      }
+      Fl_Button {btn_undolastadd-addlns} {
+        label {Undo last loan}
+        user_data undolastadd_addlns
+        callback BTN_CB
+        xywh {0 120 220 30} labelsize 21
+      }
+      Fl_Button {btn_help-addlns} {
+        label HELP
+        user_data HELP_addlns
+        callback BTN_CB
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_editbooks {
+      comment {edit books}
+      xywh {0 25 540 335} hide
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 210 10 30} labelsize 31 align 520
+      }
+      Fl_Input {inp_searchterm-editbk} {
+        label {Search term:}
+        xywh {95 240 235 30} labelsize 16
+      }
+      Fl_Choice {cic_searchby-editbk} {
+        label {Search by:}
+        user_data searchby_editbk
+        callback BTN_CB open
+        xywh {330 240 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {btn_search-editbk} {
+        label SEARCH
+        user_data search_editbk
+        callback BTN_CB
+        xywh {435 220 105 45} labelsize 21
+      }
+      Fl_Browser {brw_search-editbk} {
+        user_data browser_editbk
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 265 535 90}
+      }
+      Fl_Button {btn_help-editbk} {
+        label HELP
+        user_data HELP_editbk
+        callback BTN_CB
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Edit Books}
+        xywh {165 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {inp_title-editbk} {
+        label Title
+        xywh {45 60 410 30} labelsize 21
+      }
+      Fl_Button {btn_checktitle-editbk} {
+        label {Check Title}
+        user_data checktitle_editbk
+        callback BTN_CB
+        xywh {460 60 80 30}
+      }
+      Fl_Input {inp_author-editbk} {
+        label Author
+        xywh {65 90 390 30} labelsize 21
+      }
+      Fl_Input {inp_bookid-editbk} {
+        label {Book ID}
+        xywh {80 120 160 30} labelsize 21
+      }
+      Fl_Button {btn_checkauthor-editbk} {
+        label {Check Author}
+        user_data checkauthor_editbk
+        callback BTN_CB
+        xywh {460 90 80 30} labelsize 12
+      }
+      Fl_Button {btn_checktitle-editbk} {
+        label {Check Title}
+        user_data checktitle_editbk
+        callback BTN_CB
+        xywh {460 120 80 30}
+      }
+      Fl_Check_Button {chk_nonnumeric-editbk} {
+        label {Non-numeric}
+        user_data nonnumeric_editbk
+        callback BTN_CB
+        xywh {365 120 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {chk_automaticallycheck-editbk} {
+        label {Automatically check}
+        user_data automaticallycheck_editbk
+        callback BTN_CB
+        xywh {240 120 125 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Choice {cic_category-editbk} {
+        label Category
+        user_data category_editbk
+        callback BTN_CB open
+        xywh {65 150 200 25} down_box BORDER_BOX
+      } {}
+      Fl_Choice {cic_status-editbk} {
+        label Status
+        user_data status_editbk
+        callback BTN_CB open
+        xywh {315 150 225 25} down_box BORDER_BOX
+      } {}
+      Fl_Button {btn_editbook-editbk} {
+        label {EDIT BOOK}
+        user_data EDITBOOK
+        callback BTN_CB
+        xywh {225 175 315 40} labelsize 21
+      }
+      Fl_Button {btn_undolastedit-editbk} {
+        label {Undo last edit}
+        user_data undolastedit_editbk
+        callback BTN_CB
+        xywh {5 175 210 40} labelsize 21
+      }
+    }
+    Fl_Group group_deletebooks {
+      comment {delete books} open
+      xywh {0 25 540 335}
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 60 10 30} labelsize 31 align 520
+      }
+      Fl_Input {inp_search-delbks} {
+        label {Search term:}
+        xywh {95 90 235 30} labelsize 16
+      }
+      Fl_Choice {cic_searchby-delbks} {
+        label {Search by:}
+        user_data searchby_delbks
+        callback BTN_CB open
+        xywh {330 95 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {btn_search-delbks} {
+        label SEARCH
+        user_data search_delbks
+        callback BTN_CB
+        xywh {435 75 105 45} labelsize 21
+      }
+      Fl_Browser {brw_search-delbks} {
+        user_data browser_delbks
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 125 535 90}
+      }
+      Fl_Button {btn_help-delbks} {
+        label HELP
+        user_data HELP_delbks
+        callback BTN_CB
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Delete Books}
+        xywh {155 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {inp_bookid-delbks} {
+        label {Book ID:}
+        user_data bookid_delbks
+        callback BTN_CB
+        xywh {475 250 65 25} labelsize 16
+      }
+      Fl_Button {btn_deletebook-delbks} {
+        label {DELETE BOOK}
+        user_data DELTEBOOK
+        callback BTN_CB
+        xywh {330 215 210 35} labelsize 21
+      }
+      Fl_Button {btn_undolastdelete-delbks} {
+        label {Undo last delete}
+        user_data undolastdelete_delbks
+        callback BTN_CB
+        xywh {190 215 140 35} labelsize 16
+      }
+      Fl_Text_Display {} {
+        label {Search deleted books}
+        xywh {135 250 10 30} labelsize 17 align 520
+      }
+      Fl_Browser {brw_searchdeleted-delbks} {
+        user_data browserdeleted_delbks
+        callback BTN_CB
+        comment {Search results, click to fill text fields}
+        xywh {5 275 535 85}
+      }
+      Fl_Button {btn_restoreselected-delbks} {
+        label {Restore selected}
+        user_data restoreselected_delbks
+        callback BTN_CB selected
+        xywh {5 250 130 25} labelsize 16
+      }
+      Fl_Button {btn_searchdeleted-delbks} {
+        label Search
+        user_data searchdeleted_delbks
+        callback BTN_CB
+        xywh {325 250 80 25} labelsize 17
+      }
+    }
+    Fl_Group group_editreaders {
+      comment {Edit readers}
+      xywh {0 25 540 345} hide
+    } {
+      Fl_Text_Display {} {
+        label {Edit Readers}
+        xywh {150 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label Name
+        xywh {60 60 380 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Check Name}
+        xywh {440 60 100 30}
+      }
+      Fl_Input {} {
+        label Surname
+        xywh {70 90 370 30} labelsize 16
+      }
+      Fl_Input {} {
+        label Grade
+        xywh {45 120 20 30} labelsize 15
+      }
+      Fl_Button {} {
+        label {Check Surname}
+        xywh {440 90 100 30} labelsize 12
+      }
+      Fl_Input {} {
+        label Class
+        xywh {110 120 20 30} labelsize 15
+      }
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {200 120 105 30} labelsize 15
+      }
+      Fl_Check_Button {} {
+        label {Non-numeric}
+        xywh {305 140 90 30} down_box DOWN_BOX labelsize 12
+      }
+      Fl_Check_Button {} {
+        label {Automatically check ID}
+        xywh {305 120 170 30} down_box DOWN_BOX labelsize 13
+      }
+      Fl_Button {} {
+        label {Check ID}
+        xywh {460 120 80 30}
+      }
+      Fl_Button {} {
+        label {EDIT READER}
+        xywh {250 165 290 40} labelsize 31
+      }
+      Fl_Button {} {
+        label {Undo last add}
+        xywh {0 165 245 40} labelsize 25
+      }
+      Fl_Text_Display {} {
+        label Search
+        xywh {210 205 10 30} labelsize 32 align 520
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 255 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 235 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 280 535 90}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {90 240 240 40}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_deletereaders {
+      comment {Delete readers}
+      xywh {0 25 540 340} hide
+    } {
+      Fl_Text_Display {} {
+        label Search
+        xywh {205 60 10 30} labelsize 31 align 520
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {95 90 235 30} labelsize 16
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {330 95 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {435 75 105 45} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 125 535 90}
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {0 25 70 30} labelsize 21
+      }
+      Fl_Text_Display {} {
+        label {Delete Readers}
+        xywh {130 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID:}
+        xywh {70 215 120 35} labelsize 16
+      }
+      Fl_Button {} {
+        label {DELETE READER}
+        xywh {330 215 210 35} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last delete}
+        xywh {190 215 140 35} labelsize 16
+      }
+      Fl_Text_Display {} {
+        label {Search deleted readers}
+        xywh {175 250 10 30} labelsize 21 align 520
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 275 535 85}
+      }
+      Fl_Button {} {
+        label {Restore selected}
+        xywh {5 250 170 25} labelsize 16
+      }
+    }
+    Fl_Group group_editloans {
+      comment {Edit loans}
+      xywh {0 25 540 355} hide
+    } {
+      Fl_Text_Display {} {
+        label {Edit Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Input {} {
+        label {Book ID}
+        xywh {55 60 65 30}
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {430 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {10 200 525 30} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 230 535 140}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {85 160 235 40}
+      }
+      Fl_Choice {} {
+        label {Search:} open
+        xywh {320 175 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Input {} {
+        label {Reader ID}
+        xywh {190 60 65 30}
+      }
+      Fl_Input {} {
+        label {Loan ID}
+        xywh {310 60 65 30}
+      }
+      Fl_Check_Button {} {
+        label {auto-generate}
+        xywh {375 60 110 30} down_box DOWN_BOX
+      }
+      Fl_Input {} {
+        label {Expiry date (yyyy-mm-dd): }
+        xywh {175 90 85 30}
+      }
+      Fl_Text_Display {} {
+        label {Current date:}
+        xywh {345 90 185 25} align 4
+      }
+      Fl_Button {} {
+        label {EDIT LOAN}
+        xywh {225 120 310 30} labelsize 21
+      }
+      Fl_Button {} {
+        label {Undo last loan edit}
+        xywh {0 120 220 30} labelsize 21
+      }
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+    }
+    Fl_Group group_markloans {
+      comment {mark loans }
+      xywh {0 25 545 350} hide
+    } {
+      Fl_Text_Display {} {
+        label {Mark Loans}
+        xywh {170 25 10 30} labelsize 41 align 520
+      }
+      Fl_Choice {} {
+        label {Search by:} open
+        xywh {430 75 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label SEARCH
+        xywh {10 100 525 30} labelsize 21
+      }
+      Fl_Browser {} {
+        comment {Search results, click to fill text fields}
+        xywh {5 130 535 140}
+      }
+      Fl_Input {} {
+        label {Search term:}
+        xywh {90 60 235 40}
+      }
+      Fl_Choice {} {
+        label {Search:} open
+        xywh {325 75 105 25} down_box BORDER_BOX labelsize 17 align 1
+      } {}
+      Fl_Button {} {
+        label HELP
+        xywh {5 25 75 35} labelsize 21
+      }
+      Fl_Input {} {
+        label {Prolong by (days)}
+        xywh {140 275 100 30} labelsize 17
+      }
+      Fl_Button {} {
+        label Prolong
+        xywh {240 275 140 30} labelsize 18
+      }
+      Fl_Button {} {
+        label {Mark as returned}
+        xywh {385 275 150 30} labelsize 18
+      }
+      Fl_Button {} {
+        label {Mark as lost}
+        xywh {385 310 150 30} labelsize 18
+      }
+    }
+  }
+}
+
+Function {MENU_BTN_CB(Fl_Widget* w, void* data)} {
+  comment {Buttons from toolbar} open
+} {}
+
+Function {BTN_CB(Fl_Widget* w, void* data)} {
+  comment {For non-menu buttons (the ones in groups)}
+} {
+  code {// Cast the user data to the appropriate type (in this case, int)
+    std::string function_data = *(std::string*)data;
+
+    // debug
+    std::cout << "BTN_CB called with " << function_data << " as data. \\n";
+    if (function_data == "login_btn")
+    {
+        std::cout << "Login button clicked! \\n";
+        //std::string usr = username_input->value(); // -> here, username_inp>
+        //std::string pwd = password_input->value();
+
+
+    }
+    else { //incorrect function id
+            std::cerr << "Unknown function data: " << function_data << " - this is a programmer error \\n";
+    }} {}
+}
+
+Function {hide_all_groups()} {
+  comment {Hides all groups}
+} {
+  code {group_register.hide();
+group_login().hide;
+group_addbooks().hide;
+group_addreaders().hide;
+group_addloans().hide;} {}
+}

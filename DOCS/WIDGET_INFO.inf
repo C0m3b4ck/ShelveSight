@@ -1,0 +1,169 @@
+/// Abbreviations ///
+inp - text input
+chk - check button
+btn - button
+cic - choice
+sbmnu - submenu
+mnu - menu item
+mnubtn - menu button
+brw - browser
+
+[][][] Naming Convention [][][]
+-=-\-\=/=/ Widgets \=\=/-/-/=-
+[widget abbreviation]_[function/label]-[abbreviated group name]
+Example: btn_login-log
+-=-\-\=/=/ CB user_data \=\=/-/-/=-
+[function/widget name]_[group abbreviation]
+Example: checktitle_addbk
+If unique user_data: all caps, single word
+Example: LOGIN
+If common (back, help): all caps, [function/widget name]_[group abbreviation]
+Example: HELP_ADDBK
+
+[[[ Common User Data ]]]
+Clear - CLS
+Back - BACK
+Help - HELP_[abbreviated group name] - example: HELP_REG
+
+//////////////===============\\\\\\\\\\\\\ MENU BUTTONS ////////////////=============\\\\\\\\\\\\
+=== mnubtn_books ===
+mnu_addbooks - add books, CB: MENU_BTN_CB, usr_data: add_books
+mnu_editbooks - edit books, CB: MENU_BTN_CB, usr_data: edit_books
+mnu_removebooks - remove books, CB: MENU_BTN_CB, usr_data: remove_books
+mnu_managecategories - manage categories, CB: MENU_BTN_CB, usr_data: manage categories
+
+=== mnubtn_readers ===
+mnu_addreaders - add readers, CB: MENU_BTN_CB, usr_data: add_readers
+mnu_editreaders - edit readers, CB: MENU_BTN_CB, usr_data: edit_readers
+mnu_removereaders - remove readers, CB: MENU_BTN_CB, usr_data: remove_readers
+mnu_importreaders - import readers (from other apps), CB: MENU_BTN_CB, usr_data: import_readers
+
+=== mnubtn_loans ===
+mnu_addloans - add loans, CB: MENU_BTN_CB, usr_data: add_loans
+mnu_editloans - edit loans, CB: MENU_BTN_CB, usr_data: edit_loans
+mnu_removeloans - remove loans, CB: MENU_BTN_CB, usr_data: remove_loans
+mnu_expiredloans - expired loans, CB: MENU_BTN_CB, usr_data: expired_loans
+
+=== mnubtn_databases ===
+mnu_offlinebackup - offline backup, CB: MENU_BTN_CB, usr_data: backup_offline
+mnu_directconnection - direct connection, CB: MENU_BTN_CB, usr_data: backup_directconnection
+mnu_localp2p - local peer-to-peer, CB: MENU_BTN_CB, usr_data: backup_localp2p
+mnu_onlinep2p - online peer-to-peer, CB: MENU_BTN_CB, usr_data: backup_onlinep2p
+
+=== mnubtn_settings ===
+mnu_account - account (settings), CB: MENU_BTN_CB, usr_data: settings_account
+mnu_theme - theme (settings), CB: MENU_BTN_CB, usr_data: settings_theme
+mnu_performance - performance (settings), CB: MENU_BTN_CB, usr_data: settings_performance
+mnu_networking - networking (settings), CB: MENU_BTN_CB, usr_data: settings_networking
+mnu_other - other (settings), CB: MENU_BTN_CB, usr_data: settings_other
+
+=== other ===
+mnubtn_login - login, CB: MENU_BTN_CB, usr_data: login_show
+mnubtn_register - register, CB: MENU_BTN_CB, usr_data: register_show
+mnubtn_clear - clear (workspace), CB: MENU_BTN_CB, usr_data: clear_workspace
+
+/////////////////==================\\\\\\\\\\\\\\\\\ GROUPS ////////////===============\\\\\\\\\\\\\\\
+=== group_register ===
+inp_usr-reg - input username
+inp_pwd1-reg - input password 1
+inp_pwd2-reg - input password 2
+cic_role-reg - role choice
+chk_showpwd-reg - show password checkbox, CB: BTN_CB, usr_data: showpwd_reg
+btn_reg-reg - register button, CB: BTN_CB, usr_data: REG
+btn_back-reg - back button, CB: BTN_CB, usr_data: BACK
+btn_clear-reg - clear button, CB: BTN_CB, usr_data: CLS
+btn_help-reg - help button, CB: BTN_CB, usr_data: HELP_REG
+
+=== group_login ====
+inp_usr-log - input username
+inp_pwd-log - input password
+chk_showpwd-log - show password checkbox, CB: BTN_CB, usr_data: showpwd_log
+btn_login-log - login button, CB: BTN_CB, usr_data: LOGIN
+btn_cls-log - clear button, CB: BTN_CB, usr_data: CLS
+btn_back-log - back button, CB: BTN_CB, usr_data: BACK
+btn_help-log - help button, CB: BTN_CB, usr_data: HELP_LOG
+
+=== group_addbooks ===
+inp_title-addbk - input title
+inp_id-addbk - input ID
+inp_author-addbk - input author
+btn_checktitle-addbk - check title, CB: BTN_CB, usr_data: checktitle_addbk
+btn_checkauthor-addbk - check author, CB: BTN_CB, usr_data: checkauthor_addbk
+btn_checkid-addbkk - check ID, CB: BTN_CB, usr_data: checkid_addbk
+chk_nonnumeric-addbk - non-numeric (ID), CB: BTN_CB, usr_data: nonnumeric_addbk
+chk_automaticallycheckid-addbk - automatically check (ID), CB: BTN_CB, usr_data: automaticallycheckid_addbk
+cic_category-addbk - book categories, CB: BTN_CB, usr_data: category_addbk
+cic_status-addbk - book status, CB: BTN_CB, usr_data: status_addbk
+btn_addbook-addbk - add book, CB: BTN_CB, usr_data: ADDBOOK
+btn_undoadd-addbk - undo last add, CB: BTN_CB, usr_data: undoadd_addbk
+inp_search-addbk - search input
+cic_searchby-addbk - search by, CB: BTN_CB, usr_data: searchby_addbk
+btn_search-addbk - search, CB: BTN_CB, usr_data: search_addbk
+brw_search-addbk - search results, CB: BTN_CB, usr_data: browser_addbk
+btn_help-addbk - help button, CB: BTN_CB, usr_data: HELP_ADDBK
+
+=== group_addreaders ===
+inp_name-addrdr - input name
+btn_name-addrdr - check name button, CB: BTN_CB, usr_data: checkname_addrdr
+inp_surname-addrdr - input surname
+inp_grade-addrdr - input grade
+inp_class-addrdr - input class
+inp_readerid-addrdr - input reader ID
+chk_nonnumeric-addrdr - enable non-numeric ID, CB: BTN_CB, usr_data: nonnumeric_addrdr
+btn_checksurname-addrdr - check surname button, CB: BTN_CB, usr_data: checksurname_addrdr
+chk_automaticallycheckid-addrdr - automatically check reader ID button, CB: BTN_CB, usr_data: automaticallycheckid_addrdr
+btn_checkid-addrdr - check ID button, CB: BTN_CB, usr_data: checkid_addrdr
+btn_addreader-addrdr - add reader button, CB: BTN_CB, usr_data: ADDREADER
+btn_undolastadd-addrdr - undo last add button, CB: BTN_CB, usr_data: undolastadd_addrdr
+cic_searchby-addrdr - search by, CB: BTN_CB, usr_data: searchby_addrdr
+btn_search-addrdr - search button, CB: BTN_CB, usr_data: search_addrdr
+brw_search-addrdr - search browser, CB: BTN_CB, usr_data: browser_addrdr
+inp_search-addrdr - input search term
+btn_help-addrdr - help button, CB: BTN_CB, usr_data: HELP_addrdr
+
+=== group_addloans ===
+inp_bookid-addlns - input book ID
+cic_searchby-addlns - search by, CB: BTN_CB, usr_data: searchby_addlns
+btn_search-addlns - search button, CB: BTN_CB, usr_data: search_addlns
+brw_search-addlns - search browser, CB: BTN_CB, usr_data: browser_addlns
+inp_search-addlns - input search term
+cic_searchwhat-addlns - search what, CB: BTN_CB, usr_data: searchwhat_addlns
+inp_readerid-addlns - input reader ID
+inp_loanid-addlns - input loan ID
+inp_expirydate-addlns - input expiry date
+chk_generate-addlns - generate IDs, CB: BTN_CB, usr_data: generate_addlns  
+btn_addloan-addlns - add loan, CB: BTN_CB, usr_data: ADDLOAN
+btn_undolastadd-addlns - undo last add, CB: BTN_CB, usr_data: undolastadd_addlns 
+btn_help-addlns - help button, CB: BTN_CB, usr_data: HELP_addlns
+
+=== group_editbooks ===
+inp_searchterm-editbk - input search term
+cic_searchby-editbk - search by, CB: BTN_CB, usr_data: searchby_editbk
+btn_search-editbk - search button, CB: BTN_CB, usr_data: search_editbk
+brw_search-editbk - search browser, CB: BTN_CB, usr_data: browser_editbk
+btn_help-editbk - help button, CB: BTN_CB, usr_data: HELP_editbk
+inp_title-editbk - title input
+btn_checktitle-editbk - check title button, CB: BTN_CB, usr_data: checktitle_editbk
+inp_author-editbk - author input
+inp_bookid-editbk - book ID input
+btn_checkauthor-editbk - check author button, CB: BTN_CB, usr_data: checkauthor_editbk
+btn_checktitle-editbk - check title button, CB: BTN_CB, usr_data: checktitle_editbk
+chk_nonnumeric-editbk - non-numeric IDs, CB: BTN_CB, usr_data: nonnumeric_editbk
+chk_automaticallycheck-editbk - automatically check IDs, CB: BTN_CB, usr_data: automaticallycheck_editbk
+cic_category-editbk - book category, CB: BTN_CB, usr_data: category_editbk
+cic_status-editbk - book status, CB: BTN_CB, usr_data: status_editbk
+btn_editbook-editbk - edit book button, CB: BTN_CB, usr_data: EDITBOOK
+btn_undolastedit-editbk - undo last edit button, CB: BTN_CB, usr_data: undolastedit_editbk
+
+=== group_deletebooks ===
+inp_search-delbks - input search term
+cic_searchby-delbks - search by, CB: BTN_CB, usr_data: searchby_delbks
+btn_search-delbks - search button, CB: BTN_CB, usr_data: search_delbks
+brw_search-delbks - search browser, CB: BTN_CB, usr_data: browser_delbks
+btn_help-delbks - help button, CB: BTN_CB, usr_data: HELP_delbks
+inp_bookid-delbks - input deleted book ID
+btn_deletebook-delbks - delete book button, CB: BTN_CB, usr_data: DELETEBOOK
+btn_undolastdelete-delbks - undo last delete button, CB: BTN_CB, usr_data: undolastdelete_delbks
+brw_searchdeleted-delbks - deleted books browser, CB: BTN_CB, usr_data: browserdeleted_delbks
+btn_restoreselected-delbks - restore selected button, CB: BTN_CB, usr_data: restoreselected_delbks
+btn_searchdeleted-delbks - search deleted button, CB: BTN_CB, usr_data: searchdeleted_delbks
